@@ -16,4 +16,14 @@ class Classroom extends Model
         'year',
         'status',
     ];
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
+    }
+
+    public function lecture()
+    {
+        return $this->belongsTo(User::class, 'lecture_id');
+    }
 }

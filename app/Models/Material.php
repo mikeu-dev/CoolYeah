@@ -11,6 +11,7 @@ class Material extends Model
     use HasFactory;
     protected $fillable = [
         'course_id',
+        'classroom_id',
         'title',
         'content',
         'attachment',
@@ -19,5 +20,10 @@ class Material extends Model
     public function course()
     {
         return $this->belongsTo(Course::class);
+    }
+
+    public function classroom()
+    {
+        return $this->belongsTo(Classroom::class);
     }
 }

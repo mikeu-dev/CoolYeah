@@ -10,7 +10,7 @@ class Submission extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'assigment_id',
+        'assignment_id',
         'student_id',
         'content',
         'attachment',
@@ -20,7 +20,7 @@ class Submission extends Model
 
     public function assigment()
     {
-        return $this->belongsTo(Assigment::class);
+        return $this->belongsTo(Assignment::class);
     }
 
     public function student()

@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Http\Middleware\EnsureLecture;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -26,6 +27,7 @@ class LecturePanelProvider extends PanelProvider
         return $panel
             ->id('lecture')
             ->path('lecture')
+            ->login()
             ->colors([
                 'primary' => Color::Amber,
             ])
@@ -52,6 +54,9 @@ class LecturePanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+                EnsureLecture::class,
+            ])
+            ->databaseTransactions()
+            ->spa();
     }
 }

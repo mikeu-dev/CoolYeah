@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('submissions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('assigment_id')->constrained()->onDelete('cascade');
+            $table->foreignId('assignment_id')->constrained()->onDelete('cascade');
             $table->foreignId('student_id')->constrained('users')->onDelete('cascade');
             $table->longText('content');
             $table->text('attachment')->nullable();

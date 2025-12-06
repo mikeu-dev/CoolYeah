@@ -31,4 +31,22 @@ class Classroom extends Model
     {
         return $this->hasMany(Enrollment::class);
     }
+
+    public function materials()
+    {
+        return $this->hasManyThrough(
+            Material::class,
+            Course::class,
+            'id',
+            'course_id',
+            'course_id',
+            'id'
+        );
+    }
+
+
+    public function assignments()
+    {
+        return $this->hasMany(Assignment::class);
+    }
 }

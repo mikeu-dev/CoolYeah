@@ -15,4 +15,9 @@ class Course extends Model
         'description',
         'credits',
     ];
+
+    public function materials()
+    {
+        return $this->hasMany(Material::class);
+    }
 }

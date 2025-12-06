@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('classrooms', function (Blueprint $table) {
             $table->id();
             $table->foreignId('course_id')->constrained()->onDelete('cascade');
-            $table->foreign('lecture_id')->constrained('users')->onDelete('cascade');
+            $table->unsignedBigInteger('lecture_id');
+            $table->foreign('lecture_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('semester');
             $table->string('year');
             $table->string('status')->default('active');
